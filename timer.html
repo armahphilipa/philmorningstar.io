@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Phil">
+        <title>DICkSON</title>
+    </head>
+<link rel="stylesheet" href="style.css"/>
+<body>
+<section class="container">
+    <img src="dickson.jpg" alt="" class="image">
+    <header>Dickson MO</header>
+ 
+    <div class="time-content">
+        <div class="time days">
+          <span class="number"></span>
+          <span class="text">days</span>
+        </div>
+        <div class="time hours">
+          <span class="number"></span>
+          <span class="text">hours</span>
+        </div>
+        <div class="time minutes">
+          <span class="number"></span>
+          <span class="text">minutes</span>
+        </div>
+        <div class="time seconds">
+          <span class="number"></span>
+          <span class="text">seconds</span>
+        </div>
+      </div>
+      
+      <div class="click">
+        
+        <a href="click.html">
+            <button>click here</button>
+        </a>
+      </div>
+</section>
+<script>
+    const seconds = document.querySelector(".seconds .number"),
+  minutes = document.querySelector(".minutes .number"),
+  hours = document.querySelector(".hours .number"),
+  days = document.querySelector(".days .number");
+
+let secValue = 30,
+  minValue = 1,
+  hourValue = 0,
+  dayValue = 0;
+
+const timeFunction = setInterval(() => {
+  secValue--;
+
+  if (secValue === 0) {
+    minValue--;
+    secValue = 60;
+  }
+  if (minValue === 0) {
+    hourValue--;
+    minValue = 60;
+  }
+  if (hourValue === 0) {
+    dayValue--;
+    hourValue = 0;
+  }
+
+  if (dayValue === 0) {
+    clearInterval(timeFunction);
+  }
+  seconds.textContent = secValue < 10 ? `0${secValue}` : secValue;
+  minutes.textContent = minValue < 10 ? `0${minValue}` : minValue;
+  hours.textContent = hourValue < 10 ? `0${hourValue}` : hourValue;
+  days.textContent = dayValue < 10 ? `0${dayValue}` : dayValue;
+}, 1000); //1000ms = 1s
+
+</script>
+</body>
+</html>
